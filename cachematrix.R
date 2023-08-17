@@ -1,3 +1,23 @@
+## Function to create a special "matrix" object with caching
+## The function creates a special matrix object with methods
+#to set and get the matrix data,
+## set and get the cached inverse of the matrix.
+makeCacheMatrix <- function(x = matrix()) {
+    inv <- NULL
+    set <- function(y) {
+            x <<- y
+            inv <<- NULL
+    }
+    get <- function() x
+    setInverse <- function(inverse) inv <<- inverse
+    getInverse <- function() inv
+    list(
+            set = set,
+            get = get,
+            setInverse = setInverse,
+            getInverse = getInverse
+    )
+    
 ## Function to compute and cache the inverse of the matrix
 ## The function computes the inverse of the matrix and 
 # caches it to avoid recomputation.
